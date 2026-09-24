@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Walkie Talkie PTT</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>offline_walkie_talkie</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+
+	<!-- ================================================================= -->
+	<!-- PRIVACY USAGE DESCRIPTIONS REQUIRED BY APPLE STORE GUIDELINES    -->
+	<!-- ================================================================= -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone access is required to capture and stream real-time push-to-talk voice transmissions to nearby walkie-talkie devices.</string>
+
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Bluetooth Low Energy is used to discover and establish zero-configuration P2P mesh links with nearby devices without cell reception or internet.</string>
+
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Bluetooth peripheral mode allows this device to broadcast as an available PTT radio station to nearby peers.</string>
+
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Local Wi-Fi peer networking enables high-speed off-grid audio transport between paired iOS and Android devices.</string>
+
+	<!-- ================================================================= -->
+	<!-- MULTIPEER CONNECTIVITY BONJOUR SERVICE DECLARATIONS               -->
+	<!-- Service type format: _[serviceName]._tcp and _[serviceName]._udp   -->
+	<!-- Must match the 1-15 character serviceType in Dart code            -->
+	<!-- ================================================================= -->
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_ptt-radio._tcp</string>
+		<string>_ptt-radio._udp</string>
+	</array>
+
+	<!-- Background audio execution mode -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+	</array>
+
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+</dict>
+</plist>

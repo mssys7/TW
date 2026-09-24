@@ -1,0 +1,42 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+// Automatically resolve namespace and compileSdk for all third-party plugins safely
+subprojects { subproject ->
+    def applyNamespace = {
+        if (subproject.hasProperty('android')) {
+            try {
+                if (subproject.android.namespace == null) {
+                    subproject.android.namespace = subproject.group ?: "com.example.${subproject.name.replaceAll('-', '_')}"
+                }
+            } catch (Throwable ignored) {}
+            try {
+                subproject.android.compileSdk = 34
+            } catch (Throwable ignored) {}
+            try {
+                subproject.android.compileSdkVersion = 34
+            } catch (Throwable ignored) {}
+        }
+    }
+    if (subproject.state.executed) {
+        applyNamespace()
+    } else {
+        subproject.afterEvaluate { applyNamespace() }
+    }
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

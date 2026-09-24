@@ -1,0 +1,92 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ================================================================= -->
+    <!-- AUDIO HARDWARE PERMISSIONS                                       -->
+    <!-- ================================================================= -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <!-- ================================================================= -->
+    <!-- ANDROID 13+ (API 33+) NEARBY PEER DIRECT PERMISSIONS             -->
+    <!-- 'neverForLocation' tells OS Wi-Fi Direct is strictly for P2P data-->
+    <!-- ================================================================= -->
+    <uses-permission 
+        android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:usesPermissionFlags="neverForLocation" />
+
+    <!-- ================================================================= -->
+    <!-- ANDROID 12+ (API 31+) BLUETOOTH LOW ENERGY PERMISSIONS          -->
+    <!-- Required for zero-configuration background beacon discovery       -->
+    <!-- ================================================================= -->
+    <uses-permission 
+        android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <!-- Legacy Bluetooth permissions for Android 11 and below -->
+    <uses-permission 
+        android:name="android.permission.BLUETOOTH" 
+        android:maxSdkVersion="30" />
+    <uses-permission 
+        android:name="android.permission.BLUETOOTH_ADMIN" 
+        android:maxSdkVersion="30" />
+
+    <!-- ================================================================= -->
+    <!-- WI-FI DIRECT & LOCAL NETWORK PERMISSIONS                         -->
+    <!-- High-bandwidth payload pipe fallback for audio packets           -->
+    <!-- ================================================================= -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <!-- Location required strictly for older Android versions during BLE discovery -->
+    <uses-permission 
+        android:name="android.permission.ACCESS_FINE_LOCATION" 
+        android:maxSdkVersion="32" />
+    <uses-permission 
+        android:name="android.permission.ACCESS_COARSE_LOCATION" 
+        android:maxSdkVersion="32" />
+
+    <!-- Hardware feature declarations -->
+    <uses-feature 
+        android:name="android.hardware.bluetooth_le" 
+        android:required="true" />
+    <uses-feature 
+        android:name="android.hardware.microphone" 
+        android:required="true" />
+    <uses-feature 
+        android:name="android.hardware.wifi.direct" 
+        android:required="false" />
+
+    <application
+        android:label="Walkie Talkie PTT"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme" />
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+</manifest>

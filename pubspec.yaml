@@ -1,0 +1,46 @@
+name: offline_walkie_talkie
+description: "A production-grade offline Push-To-Talk (PTT) Walkie-Talkie app using BLE and Local Peer-to-Peer connectivity."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Local P2P Wi-Fi Direct / Multipeer Connectivity & BLE
+  # Uses Google Nearby Connections API on Android & Apple Multipeer Connectivity on iOS
+  # Upgraded to flutter_nearby_connections_plus for AGP 8, Kotlin 1.9+, and Android 13/14 compatibility
+  flutter_nearby_connections_plus: ^1.2.1
+
+  # Granular cross-platform runtime permission management
+  permission_handler: ^11.3.1
+
+  # Low-latency, high-efficiency compressed audio recording (Opus / AAC-LC)
+  record: ^5.2.0
+
+  # Native low-latency audio playback pipeline with cache and temp routing
+  audioplayers: ^6.1.0
+
+  # Sandboxed temporary & app document directory resolution
+  path_provider: ^2.1.5
+
+  # File UUID identification for chunked audio payload headers
+  uuid: ^4.5.1
+
+  # Stream / reactive state management
+  provider: ^6.1.2
+
+  # Modern UI iconography
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
